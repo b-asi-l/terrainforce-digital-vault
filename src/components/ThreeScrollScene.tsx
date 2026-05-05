@@ -179,51 +179,16 @@ export function ThreeScrollScene() {
 
         {/* Frames */}
         <div className="absolute inset-0 grid place-items-center">
-          {frames.map((f, i) => {
-            const start = i / frames.length;
-            const end = (i + 1) / frames.length;
-            const mid = (start + end) / 2;
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            const opacity = useTransform(smooth, [start, mid - 0.04, mid + 0.04, end], [0, 1, 1, 0]);
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            const y = useTransform(smooth, [start, mid, end], [60, 0, -60]);
-            return (
-              <motion.div
-                key={i}
-                style={{ opacity, y }}
-                className="absolute inset-0 grid place-items-center px-[5%] text-center pointer-events-none"
-              >
-                <div className="max-w-3xl">
-                  <div className="text-[10px] tracking-[5px] uppercase text-brand mb-5 flex items-center justify-center gap-3">
-                    <span className="w-10 h-px bg-brand" />
-                    {f.tag}
-                    <span className="w-10 h-px bg-brand" />
-                  </div>
-                  <h2 className="font-display text-[clamp(48px,9vw,140px)] leading-[0.9] tracking-wider mb-6">
-                    <span className="block text-stroke">{f.title[0]}</span>
-                    <span className="block text-brand drop-shadow-[0_0_50px_rgba(128,186,65,0.6)]">{f.title[1]}</span>
-                  </h2>
-                  <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">{f.body}</p>
-                </div>
-              </motion.div>
-            );
-          })}
+          {frames.map((f, i) => (
+            <Frame key={i} frame={f} index={i} total={frames.length} progress={smooth} />
+          ))}
         </div>
 
         {/* Chapter indicator */}
         <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-3 z-10">
-          {frames.map((_, i) => {
-            const start = i / frames.length;
-            const end = (i + 1) / frames.length;
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            const w = useTransform(smooth, [start, end], [8, 36]);
-            return (
-              <div key={i} className="flex items-center gap-3">
-                <span className="text-[10px] tracking-[2px] uppercase text-muted-foreground">0{i + 1}</span>
-                <motion.span style={{ width: w }} className="h-px bg-brand" />
-              </div>
-            );
-          })}
+          {frames.map((_, i) => (
+            <ChapterTick key={i} index={i} total={frames.length} progress={smooth} />
+          ))}
         </div>
 
         {/* Scroll hint */}
