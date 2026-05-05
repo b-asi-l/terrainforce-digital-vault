@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { HorizontalServices } from "@/components/HorizontalServices";
+import { ThreeScrollScene } from "@/components/ThreeScrollScene";
 import { ParallaxShield } from "@/components/ParallaxShield";
 import { StackingStats } from "@/components/StackingStats";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -25,6 +26,7 @@ function Index() {
       <ScrollProgress />
       <Navbar />
       <Hero />
+      <ThreeScrollScene />
       <About />
       <HorizontalServices />
       <ParallaxShield />
