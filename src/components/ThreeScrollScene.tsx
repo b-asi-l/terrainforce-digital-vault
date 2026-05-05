@@ -199,3 +199,68 @@ export function ThreeScrollScene() {
     </motion.section>
   );
 }
+
+type FrameData = { tag: string; title: string[]; body: string };
+
+function Frame({
+  frame,
+  index,
+  total,
+  progress,
+}: {
+  frame: FrameData;
+  index: number;
+  total: number;
+  progress: import("framer-motion").MotionValue<number>;
+}) {
+  const start = index / total;
+  const end = (index + 1) / total;
+  const mid = (start + end) / 2;
+  const opacity = useTransform(progress, [start, mid - 0.04, mid + 0.04, end], [0, 1, 1, 0]);
+  const y = useTransform(progress, [start, mid, end], [60, 0, -60]);
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      className="absolute inset-0 grid place-items-center px-[5%] text-center pointer-events-none"
+    >
+      <div className="max-w-3xl">
+        <div className="text-[10px] tracking-[5px] uppercase text-brand mb-5 flex items-center justify-center gap-3">
+          <span className="w-10 h-px bg-brand" />
+          {frame.tag}
+          <span className="w-10 h-px bg-brand" />
+        </div>
+        <h2 className="font-display text-[clamp(48px,9vw,140px)] leading-[0.9] tracking-wider mb-6">
+          <span className="block text-stroke">{frame.title[0]}</span>
+          <span className="block text-brand drop-shadow-[0_0_50px_rgba(128,186,65,0.6)]">
+            {frame.title[1]}
+          </span>
+        </h2>
+        <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          {frame.body}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+function ChapterTick({
+  index,
+  total,
+  progress,
+}: {
+  index: number;
+  total: number;
+  progress: import("framer-motion").MotionValue<number>;
+}) {
+  const start = index / total;
+  const end = (index + 1) / total;
+  const w = useTransform(progress, [start, end], [8, 36]);
+  return (
+    <div className="flex items-center gap-3">
+      <span className="text-[10px] tracking-[2px] uppercase text-muted-foreground">
+        0{index + 1}
+      </span>
+      <motion.span style={{ width: w }} className="h-px bg-brand" />
+    </div>
+  );
+}
