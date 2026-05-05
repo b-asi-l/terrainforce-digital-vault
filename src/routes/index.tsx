@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Services } from "@/components/Services";
+import { HorizontalServices } from "@/components/HorizontalServices";
+import { ParallaxShield } from "@/components/ParallaxShield";
+import { StackingStats } from "@/components/StackingStats";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import { Sectors } from "@/components/Sectors";
 import { CTAStrip } from "@/components/CTAStrip";
 import { Trust } from "@/components/Trust";
@@ -19,10 +22,13 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <About />
-      <Services />
+      <HorizontalServices />
+      <ParallaxShield />
+      <StackingStats />
       <Sectors />
       <CTAStrip />
       <Trust />
