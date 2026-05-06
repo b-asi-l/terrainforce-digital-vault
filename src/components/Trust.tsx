@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import indiaMap from "@/assets/india-map.png";
+import indiaMap from "@/assets/terrain-india.png";
 import team from "@/assets/team.jpg";
 
 const metrics = [
