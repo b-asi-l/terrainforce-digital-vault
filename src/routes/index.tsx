@@ -36,6 +36,8 @@ function Index() {
       <Sectors />
       <CTAStrip />
       <Trust />
+      <Partners />
+      <ScrollMarquee />
       <Team />
       <Clients />
       <Branches />
