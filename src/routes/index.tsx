@@ -13,6 +13,8 @@ import { Trust } from "@/components/Trust";
 import { Team } from "@/components/Team";
 import { Clients } from "@/components/Clients";
 import { Branches } from "@/components/Branches";
+import { Partners } from "@/components/Partners";
+import { ScrollMarquee } from "@/components/ScrollMarquee";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
